@@ -1,0 +1,28 @@
+<svg width="980" height="620" viewBox="0 0 980 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dockerfile Security Reviewer terminal demo</title>
+  <desc id="desc">A terminal-style screenshot showing the CLI reporting Dockerfile security findings.</desc>
+  <rect width="980" height="620" rx="24" fill="#101418"/>
+  <rect x="24" y="24" width="932" height="572" rx="18" fill="#161B22" stroke="#2B3440"/>
+  <circle cx="56" cy="54" r="8" fill="#FF5F56"/>
+  <circle cx="82" cy="54" r="8" fill="#FFBD2E"/>
+  <circle cx="108" cy="54" r="8" fill="#27C93F"/>
+  <text x="490" y="60" text-anchor="middle" fill="#9AA4B2" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18">dockerfile-reviewer</text>
+
+  <text x="52" y="104" fill="#7EE787" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20">$ python3 -m dockerfile_security_reviewer samples/insecure.Dockerfile</text>
+  <text x="52" y="146" fill="#E6EDF3" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19">Dockerfile review for samples/insecure.Dockerfile</text>
+  <text x="52" y="178" fill="#E6EDF3" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19">Found 7 issues: 3 high, 3 medium, 1 low</text>
+
+  <text x="52" y="232" fill="#FF7B72" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19">[HIGH] DSR005 line 6: Potential secret exposed through ENV</text>
+  <text x="72" y="262" fill="#C9D1D9" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17">The variable AWS_SECRET_ACCESS_KEY looks sensitive and is assigned in the Dockerfile.</text>
+  <text x="72" y="290" fill="#8B949E" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17">Fix: Inject secrets at runtime with your orchestrator or secret manager.</text>
+
+  <text x="52" y="340" fill="#FF7B72" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19">[HIGH] DSR011 line 9: Remote script piped into a shell</text>
+  <text x="72" y="370" fill="#C9D1D9" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17">The Dockerfile downloads a remote script and executes it immediately.</text>
+  <text x="72" y="398" fill="#8B949E" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17">Fix: Fetch it separately, verify it, and execute a trusted local file instead.</text>
+
+  <text x="52" y="448" fill="#F2CC60" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19">[MEDIUM] DSR001 line 1: Base image uses the latest tag</text>
+  <text x="72" y="478" fill="#C9D1D9" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17">The image python:latest is not pinned to a stable version.</text>
+  <text x="72" y="506" fill="#8B949E" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17">Fix: Pin to a specific version or digest, for example python:3.12-slim.</text>
+
+  <text x="52" y="560" fill="#7EE787" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18">$ echo "ready to fix"</text>
+</svg>

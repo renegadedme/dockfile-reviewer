@@ -45,16 +45,26 @@ python3 -m dockerfile_security_reviewer path/to/Dockerfile --explain-with-openai
 
 ```text
 Dockerfile review for samples/insecure.Dockerfile
-Found 7 issues: 2 high, 4 medium, 1 low
+Found 7 issues: 3 high, 3 medium, 1 low
 
-[HIGH] DSR005 line 5: Potential secret exposed through ENV
+[HIGH] DSR005 line 6: Potential secret exposed through ENV
   The variable `AWS_SECRET_ACCESS_KEY` looks sensitive and is assigned in the Dockerfile.
   Fix: Inject secrets at runtime with your orchestrator or secret manager instead of baking them into the image.
+
+[HIGH] DSR011 line 9: Remote script piped into a shell
+  The Dockerfile downloads a remote script and executes it immediately.
+  Fix: Fetch the artifact separately, verify its checksum or signature, and execute a trusted local file instead.
 
 [MEDIUM] DSR001 line 1: Base image uses the latest tag
   The image `python:latest` is not pinned to a stable version.
   Fix: Pin to a specific version or digest, for example `python:3.12-slim`.
 ```
+
+## Screenshot demo
+
+Here is the CLI reviewing the intentionally unsafe sample Dockerfile:
+
+![Terminal demo](docs/demo.svg)
 
 ## Optional OpenAI explanation
 
